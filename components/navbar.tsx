@@ -4,6 +4,7 @@ import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem, Button,
 import NextLink from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { ThemeSwitch } from './theme-switch';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +15,7 @@ export const Navbar = () => {
   return (
     <NextUINavbar maxWidth="xl" position="sticky" onMenuOpenChange={setIsMenuOpen}>
       {/* Brand Section */}
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
+      <NavbarContent className="flex-grow basis-1/5 sm:basis-auto" justify="start">
         <NavbarMenuToggle
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
           className="sm:hidden"
@@ -31,7 +32,7 @@ export const Navbar = () => {
       </NavbarContent>
 
       {/* Links Section */}
-      <NavbarContent className="hidden sm:flex basis-3/5 sm:basis-full" justify="center">
+      <NavbarContent className="hidden sm:flex basis-auto" justify="center">
         <NavbarItem>
           <NextLink href="#home">Home</NextLink>
         </NavbarItem>
@@ -44,11 +45,12 @@ export const Navbar = () => {
       </NavbarContent>
 
       {/* User Actions and Currency Display */}
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="end">
+      <NavbarContent className="flex-grow basis-1/5 sm:basis-auto" justify="end">
         <NavbarItem className='flex gap-2 items-center'>
             <FontAwesomeIcon icon={faClock} />
             <div className="text-blue-400 mr-5">{FormattedTimeCurrency}</div>
         </NavbarItem>
+        <ThemeSwitch />
         <NavbarItem className="hidden sm:flex">
           <Button href="#login">Login</Button>
         </NavbarItem>

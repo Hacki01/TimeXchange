@@ -1,13 +1,14 @@
 "use client";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 import { FC } from "react";
 import { VisuallyHidden } from "@react-aria/visually-hidden";
 import { SwitchProps, useSwitch } from "@nextui-org/switch";
 import { useTheme } from "next-themes";
 import { useIsSSR } from "@react-aria/ssr";
 import clsx from "clsx";
-
-import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 export interface ThemeSwitchProps {
   className?: string;
@@ -70,11 +71,7 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
-          <MoonFilledIcon size={22} />
-        )}
+        <FontAwesomeIcon className='text-2xl' icon={!isSelected || isSSR ? faMoon : faSun} />
       </div>
     </Component>
   );
