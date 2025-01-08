@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from 'react';
-import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenu, NavbarMenuItem, NavbarMenuToggle } from '@nextui-org/react';
+import { Navbar as NextUINavbar, NavbarBrand, NavbarContent, NavbarItem, Button, NavbarMenu, NavbarMenuItem, NavbarMenuToggle, Tooltip } from '@nextui-org/react';
 import NextLink from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons';
@@ -8,6 +8,8 @@ import { ThemeSwitch } from './theme-switch';
 
 import hourglassicon from '@/public/hourglass.svg';
 import Image from 'next/image';
+import { faAdd } from '@fortawesome/free-solid-svg-icons';
+import Link from 'next/link';
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,7 +18,7 @@ export const Navbar = () => {
   const FormattedTimeCurrency = nFormat.format(TimeCurrency).replace(',', '.');;
 
   return (
-    <NextUINavbar maxWidth="xl" position="sticky" onMenuOpenChange={setIsMenuOpen}>
+    <NextUINavbar maxWidth="xl" isBordered position="sticky" onMenuOpenChange={setIsMenuOpen}>
       {/* Brand Section */}
       <NavbarContent className="flex-grow basis-1/5 sm:basis-auto" justify="start">
         <NavbarMenuToggle
@@ -49,9 +51,13 @@ export const Navbar = () => {
 
       {/* User Actions and Currency Display */}
       <NavbarContent className="flex-grow basis-1/5 sm:basis-auto" justify="end">
-        <NavbarItem className='flex gap-2 items-center'>
-            <FontAwesomeIcon icon={faClock}/>
-            <div className="text-blue-400 mr-5">{FormattedTimeCurrency}</div>
+        <NavbarItem>
+            <Tooltip content="Your time balance" color='primary' placement="bottom">
+              <Link href="time" className='flex gap-2 items-center'>
+                <FontAwesomeIcon icon={faClock}/>
+                <div className="text-blue-500 mr-5 font-medium">{FormattedTimeCurrency}</div>
+              </Link>
+            </Tooltip>
         </NavbarItem>
         <NavbarItem className="hidden sm:flex">
           <NextLink href="#login"><Button>Login</Button></NextLink>
