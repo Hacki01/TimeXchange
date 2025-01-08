@@ -6,6 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { ThemeSwitch } from './theme-switch';
 
+import hourglassicon from '@/public/hourglass.svg';
+import Image from 'next/image';
+
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const nFormat = new Intl.NumberFormat("pl", {minimumFractionDigits: 2});
@@ -24,8 +27,8 @@ export const Navbar = () => {
           <NextLink className="flex justify-start items-center gap-1" href="/">
             <div className="flex items-center gap-2">
               {/* Replace with your Logo component */}
-              <span className="font-bold text-lg">⏳</span>
-              <p className="font-bold text-inherit">TimeXchange</p>
+              <Image alt='Hourglass' src={hourglassicon}/>
+              <span className="font-bold text-inherit">TimeXchange</span>
             </div>
           </NextLink>
         </NavbarBrand>
@@ -47,16 +50,16 @@ export const Navbar = () => {
       {/* User Actions and Currency Display */}
       <NavbarContent className="flex-grow basis-1/5 sm:basis-auto" justify="end">
         <NavbarItem className='flex gap-2 items-center'>
-            <FontAwesomeIcon icon={faClock} />
+            <FontAwesomeIcon icon={faClock}/>
             <div className="text-blue-400 mr-5">{FormattedTimeCurrency}</div>
         </NavbarItem>
-        <ThemeSwitch />
         <NavbarItem className="hidden sm:flex">
           <NextLink href="#login"><Button>Login</Button></NextLink>
         </NavbarItem>
         <NavbarItem  className="hidden sm:flex">
           <NextLink href="#signup"><Button color="primary">Sign Up</Button></NextLink>
         </NavbarItem>
+        <ThemeSwitch />
       </NavbarContent>
 
       {/* Mobile Menu */}
