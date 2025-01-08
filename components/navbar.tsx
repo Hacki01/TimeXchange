@@ -34,13 +34,13 @@ export const Navbar = () => {
       {/* Links Section */}
       <NavbarContent className="hidden sm:flex basis-auto" justify="center">
         <NavbarItem>
-          <NextLink href="#home">Home</NextLink>
+          <NextLink href="/">Home</NextLink>
         </NavbarItem>
         <NavbarItem>
-          <NextLink href="#services">Services</NextLink>
+          <NextLink href="offers">Offers</NextLink>
         </NavbarItem>
         <NavbarItem>
-          <NextLink href="#faq">FAQ</NextLink>
+          <NextLink href="faq">FAQ</NextLink>
         </NavbarItem>
       </NavbarContent>
 
@@ -52,29 +52,29 @@ export const Navbar = () => {
         </NavbarItem>
         <ThemeSwitch />
         <NavbarItem className="hidden sm:flex">
-          <Button href="#login">Login</Button>
+          <NextLink href="#login"><Button>Login</Button></NextLink>
         </NavbarItem>
         <NavbarItem  className="hidden sm:flex">
-          <Button color="primary" href="#signup">Sign Up</Button>
+          <NextLink href="#signup"><Button color="primary">Sign Up</Button></NextLink>
         </NavbarItem>
       </NavbarContent>
 
       {/* Mobile Menu */}
       <NavbarMenu className='gap-4'>
         <NavbarMenuItem>
-          <NextLink href="#home">Home</NextLink>
+          <NextLink href="home">Home</NextLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <NextLink href="#services">Services</NextLink>
+          <NextLink href="offers">offers</NextLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <NextLink href="#faq">FAQ</NextLink>
+          <NextLink href="faq">FAQ</NextLink>
         </NavbarMenuItem>
         <NavbarMenuItem className='mt-6 text-blue-300'>
-          <NextLink href="#login">Login</NextLink>
+          <NextLink href="login">Login</NextLink>
         </NavbarMenuItem>
         <NavbarMenuItem>
-          <NextLink className="text-blue-500" href="#signup">Sign Up</NextLink>
+          <NextLink className="text-blue-500" href="signup">Sign Up</NextLink>
         </NavbarMenuItem>
       </NavbarMenu>
     </NextUINavbar>
